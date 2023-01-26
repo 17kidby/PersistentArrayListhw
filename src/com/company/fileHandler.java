@@ -70,11 +70,15 @@ public class fileHandler {
         return found;
     }
 
-    public void writeToAdd(String fileName, ArrayList listToAdd, boolean append){
-        try (PrintWriter pw = new PrintWriter(new FileWriter(fileName, append));
+    public void writeToAdd(String fileName, String inputThing, boolean append){
+        try (PrintWriter pw = new PrintWriter(new FileWriter(fileName, append)); BufferedReader br = new BufferedReader(new FileReader(fileName))
         ){
-            for (int i =0; i<listToAdd.size(); i++)
-                pw.println(listToAdd.get(i));
+            String line = br.readLine();
+
+            while (line != null){
+                line = br.readLine();
+            }
+            pw.println(inputThing);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -125,6 +129,14 @@ public class fileHandler {
 
 
 }
+
+
+
+
+
+
+
+
 
 
 
